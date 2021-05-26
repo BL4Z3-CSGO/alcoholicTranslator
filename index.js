@@ -62,7 +62,7 @@ function main() {
                         parsedResponse = JSON.parse(response)[0].translations[0].text
                         translatedPacket = array[0] + ";" + parsedResponse.replace(";", "")
                         console.log(`translated: ${parsedResponse}`)
-                        if (parsedResponse != array[1]) {
+                        if (String(parsedResponse).toLowerCase() != String(array[1]).toLowerCase()) {
                             dbgLog("Outgoing Packet: " + translatedPacket)
                             client.send(translatedPacket, (err) => {})
                         } else {
